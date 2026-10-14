@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface WeatherRepository extends JpaRepository <WeatherData, Long>{
-    List<WeatherData> findByCity(String city);
+    WeatherData findByCity(String city);
 }
