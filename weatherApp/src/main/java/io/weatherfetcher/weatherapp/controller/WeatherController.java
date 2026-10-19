@@ -3,10 +3,7 @@ package io.weatherfetcher.weatherapp.controller;
 import io.weatherfetcher.weatherapp.model.WeatherDTO;
 import io.weatherfetcher.weatherapp.model.WeatherData;
 import io.weatherfetcher.weatherapp.service.WeatherService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/weather")
@@ -19,6 +16,10 @@ public class WeatherController {
     public WeatherDTO getCity(@PathVariable String city){
         WeatherData data=weatherService.fetchByCity(city);
         return new WeatherDTO(data);
+    }
+    @PostMapping
+    public WeatherData saveWeather(@RequestBody WeatherData weatherData){
+        return weatherService.saveWeather(weatherData);
     }
 
 }

@@ -13,4 +13,7 @@ public class WeatherService {
     public WeatherData fetchByCity(String city){
         return weatherRepository.findByCity(city);
     }
+    public WeatherData saveWeather(WeatherData weatherData) {
+        return weatherRepository.save(weatherData);
+    }
 }
