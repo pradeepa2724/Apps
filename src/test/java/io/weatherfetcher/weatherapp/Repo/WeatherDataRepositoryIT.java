@@ -2,12 +2,13 @@ package io.weatherfetcher.weatherapp.Repo;
 
 import io.weatherfetcher.weatherapp.model.WeatherData;
 import io.weatherfetcher.weatherapp.repository.WeatherRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,17 +35,23 @@ class WeatherDataRepositoryIT {
 //        assertNotNull(weatherDataList);
 //        assertEquals("Mumbai",weatherData.getCity());
 //    }
+    @BeforeEach
+    void setup(){
+        weatherRepository.deleteAll();
+    }
     @Test
     void testGetWeatherByCity() throws Exception {
         WeatherData data= new WeatherData();
         data.setCity("Mumbai");
-        data.setTemperature(20.0);
-        data.setHumidity(10);
+        data.setTemperature(30.5);
+        data.setHumidity(70);
         weatherRepository.save(data);
-
-        mockMvc.perform(get("/weather/mumbai"))
+        System.out.println("COUNT : "+weatherRepository.count());
+        System.out.println(weatherRepository.findAll());
+        mockMvc.perform(get("/weather/Mumbai"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) jsonPath("$.city").value("Mumbai"))
-                .andExpect((ResultMatcher) jsonPath("$.temperature").value(30.5))
-                .andExpect((ResultMatcher) jsonPath("$.humidity").value(70));    }
+                .andExpect(jsonPath("$.city").value("Mumbai"))
+                .andExpect(jsonPath("$.temperature").value(30.5))
+                .andExpect(jsonPath("$.humidity").value(70));
+    }
 }
