@@ -21,5 +21,13 @@ public class WeatherController {
     public WeatherData saveWeather(@RequestBody WeatherData weatherData){
         return weatherService.saveWeather(weatherData);
     }
+    @PutMapping("/{id}")
+    public WeatherData updateById(@PathVariable Long id,@RequestBody WeatherData weatherData){
+        return weatherService.updateWeather(id,weatherData);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
+         weatherService.deleteById(id);
+    }
 
 }

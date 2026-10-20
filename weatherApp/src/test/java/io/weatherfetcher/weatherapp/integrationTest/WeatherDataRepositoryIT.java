@@ -1,4 +1,4 @@
-package io.weatherfetcher.weatherapp.Repo;
+package io.weatherfetcher.weatherapp.integrationTest;
 
 import io.weatherfetcher.weatherapp.model.WeatherData;
 import io.weatherfetcher.weatherapp.repository.WeatherRepository;
@@ -14,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 @SpringBootTest(properties = "spring.config.name=application")
 @AutoConfigureMockMvc

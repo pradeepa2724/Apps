@@ -16,4 +16,16 @@ public class WeatherService {
     public WeatherData saveWeather(WeatherData weatherData) {
         return weatherRepository.save(weatherData);
     }
+
+    public WeatherData updateWeather(Long id,WeatherData weatherData) {
+        WeatherData existingData=weatherRepository.findById(id).orElseThrow();
+        existingData.setCity(weatherData.getCity());
+        existingData.setHumidity(weatherData.getHumidity());
+        existingData.setTemperature(weatherData.getTemperature());
+        return weatherRepository.save(existingData);
+    }
+
+    public void deleteById(Long id) {
+        weatherRepository.deleteById(id);
+    }
 }
