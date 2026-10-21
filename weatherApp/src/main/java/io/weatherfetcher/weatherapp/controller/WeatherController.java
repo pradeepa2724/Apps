@@ -13,7 +13,7 @@ public class WeatherController {
         this.weatherService=weatherService;
     }
     @GetMapping("/{city}")
-    public WeatherDTO getCity(@PathVariable String city){
+    public WeatherDTO fetchByCity(@PathVariable String city){
         WeatherData data=weatherService.fetchByCity(city);
         return new WeatherDTO(data);
     }
