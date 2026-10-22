@@ -3,6 +3,7 @@ package io.weatherfetcher.weatherapp.controller;
 import io.weatherfetcher.weatherapp.model.WeatherDTO;
 import io.weatherfetcher.weatherapp.model.WeatherData;
 import io.weatherfetcher.weatherapp.service.WeatherService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,7 +19,7 @@ public class WeatherController {
         return new WeatherDTO(data);
     }
     @PostMapping
-    public WeatherData saveWeather(@RequestBody WeatherData weatherData){
+    public WeatherData saveWeather(@Valid @RequestBody WeatherData weatherData){
         return weatherService.saveWeather(weatherData);
     }
     @PutMapping("/{id}")
