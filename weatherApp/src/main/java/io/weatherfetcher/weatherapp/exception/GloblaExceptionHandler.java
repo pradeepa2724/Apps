@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
-
 @ControllerAdvice
 public class GloblaExceptionHandler {
     @ExceptionHandler(WeatherNotFoundException.class)
