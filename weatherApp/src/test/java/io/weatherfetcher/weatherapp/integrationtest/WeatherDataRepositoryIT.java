@@ -1,4 +1,4 @@
-package io.weatherfetcher.weatherapp.integrationTest;
+package io.weatherfetcher.weatherapp.integrationtest;
 
 import io.weatherfetcher.weatherapp.model.WeatherData;
 import io.weatherfetcher.weatherapp.repository.WeatherRepository;
