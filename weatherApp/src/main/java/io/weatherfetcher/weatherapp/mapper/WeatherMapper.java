@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface WeatherMapper {
     WeatherData toEntity(WeatherRequestDTO weatherRequestDTO);
-    WeatherResponseDTO toResponseDto(WeatherData weatherData);
+    WeatherResponseDTO toResponseDTO(WeatherData weatherData);
 }

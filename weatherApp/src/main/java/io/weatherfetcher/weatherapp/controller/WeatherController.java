@@ -8,6 +8,9 @@ import io.weatherfetcher.weatherapp.service.WeatherService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +19,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/weather")
 public class WeatherController {
     private final WeatherService weatherService;
+    @GetMapping
+    public Page<WeatherData> getAllData(@RequestParam int page,@RequestParam int size){
+        return weatherService.getAllData(page,size);
+    }
     public WeatherController(WeatherService weatherService) {
         this.weatherService=weatherService;
     }
