@@ -28,10 +28,20 @@ public class WeatherService {
         return weatherRepository.findByCity(city);
     }
     public WeatherResponseDTO saveWeather(WeatherRequestDTO requestDTO) {
-        WeatherData weatherData= weatherMapper.toEntity(requestDTO);
-        WeatherData saved=weatherRepository.save(weatherData);
-        log.info("Saved weatherdata inside the repository");
-        return weatherMapper.toResponseDTO(saved);
+//        WeatherData weatherData= weatherMapper.toEntity(requestDTO);
+//        WeatherData saved=weatherRepository.save(weatherData);
+//        log.info("Saved weatherdata inside the repository");
+//        return weatherMapper.toResponseDTO(saved);
+
+            System.out.println("DTO = " + requestDTO);
+
+            WeatherData weatherData = weatherMapper.toEntity(requestDTO);
+
+            System.out.println("ENTITY = " + weatherData);
+
+            WeatherData saved = weatherRepository.save(weatherData);
+
+            return weatherMapper.toResponseDTO(saved);
     }
 
     public WeatherData updateWeather(Long id,WeatherData weatherData) {
