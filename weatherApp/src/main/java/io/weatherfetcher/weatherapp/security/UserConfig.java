@@ -11,11 +11,16 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class UserConfig {
     @Bean
     public UserDetailsService userDetailsService(){
-        UserDetails userDetails= User
+        UserDetails user= User
                 .withUsername("user")
                 .password("{noop}password")
                 .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(userDetails);
+        UserDetails admin= User
+                .withUsername("Admin")
+                .password("{noop}password")
+                .roles("ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user,admin);
     }
 }
