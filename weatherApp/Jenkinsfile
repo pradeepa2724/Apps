@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    tools{
+        maven 'Maven3'
+    }
+    stages{
+        stage('Build'){
+            steps{
+             dir('weatherApp') {
+                sh 'mvn clean package'
+            }
+            }
+        }
+    }
+}
