@@ -4,10 +4,17 @@ pipeline{
         maven 'Maven3'
     }
     stages{
-        stage('Build'){
+        stage('build'){
             steps{
              dir('weatherApp') {
                 sh 'mvn clean package'
+            }
+            }
+        }
+        stage('docker build'){
+            steps{
+                dir('weatherApp'){
+                sh 'docker build -t weatherapp:latest .'
             }
             }
         }
